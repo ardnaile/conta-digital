@@ -14,16 +14,16 @@ INSERT [Transacao] ([id_transacao], [valor_transacao], [dt_hr_transacao], [tp_tr
 VALUES (5, 750.90, CAST(N'2023-05-25T14:45:00.000' AS DateTime), 5, 234567);
 
 INSERT [Transacao] ([id_transacao], [valor_transacao], [dt_hr_transacao], [tp_transacao], [num_conta]) 
-VALUES (6, 300.30, CAST(N'2023-06-18T18:30:00.000' AS DateTime), 6, 6);
+VALUES (6, 300.30, CAST(N'2023-06-18T18:30:00.000' AS DateTime), 6, 876543);
 
 INSERT [Transacao] ([id_transacao], [valor_transacao], [dt_hr_transacao], [tp_transacao], [num_conta]) 
-VALUES (7, 1200.60, CAST(N'2023-07-05T12:15:00.000' AS DateTime), 7, 7);
+VALUES (7, 1200.60, CAST(N'2023-07-05T12:15:00.000' AS DateTime), 7, 543210);
 
 INSERT [Transacao] ([id_transacao], [valor_transacao], [dt_hr_transacao], [tp_transacao], [num_conta]) 
-VALUES (8, 480.25, CAST(N'2023-08-22T09:30:00.000' AS DateTime), 8, 8);
+VALUES (8, 480.25, CAST(N'2023-08-22T09:30:00.000' AS DateTime), 8, 210987);
 
 INSERT [Transacao] ([id_transacao], [valor_transacao], [dt_hr_transacao], [tp_transacao], [num_conta]) 
-VALUES (9, 950.70, CAST(N'2023-09-10T16:45:00.000' AS DateTime), 9, 9);
+VALUES (9, 950.70, CAST(N'2023-09-10T16:45:00.000' AS DateTime), 9, 987653);
 
 INSERT [Transacao] ([id_transacao], [valor_transacao], [dt_hr_transacao], [tp_transacao], [num_conta]) 
-VALUES (10, 700.40, CAST(N'2023-10-28T13:20:00.000' AS DateTime), 10, 10);
+VALUES (10, 700.40, CAST(N'2023-10-28T13:20:00.000' AS DateTime), 10, 123459);
