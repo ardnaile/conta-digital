@@ -2,7 +2,7 @@ CREATE TABLE [Transacao] (
   [id_transacao] int PRIMARY KEY,
   [valor_transacao] decimal,
   [dt_hr_transacao] datetime,
-  [tp_transacao] nvarchar(255),
+  [tp_transacao] int,
   [num_conta] int
 )
 GO
