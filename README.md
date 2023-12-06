@@ -29,6 +29,7 @@ Para este projeto foi utilizado o SQL Server. Abaixo segue os scripts SQL separa
 - [Índices]
 - [Stored procedures]
 - [Functions]
+- [Principais consultas mapeadas baseadas em regras de negócio]
 
 ### Código Fonte do CRUD
 (em andamento)
