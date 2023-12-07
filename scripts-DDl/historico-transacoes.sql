@@ -1,5 +1,5 @@
 CREATE TABLE [HistoricoTransacoes] (
-  [id_historico] int PRIMARY KEY,
+  [id_historico] int IDENTITY(1,1) PRIMARY KEY,
   [num_conta] int,
   [id_transacao] int,
   [tp_transacao] int
