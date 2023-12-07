@@ -1,7 +1,7 @@
 CREATE TABLE [TokenAutenticacao] (
-  [id_token] int PRIMARY KEY,
+  [id_token] int IDENTITY(1,1) PRIMARY KEY,
   [id_usuario] int,
-  [token] nvarchar(255),
+  [token] varchar(255),
   [dt_criacao] datetime,
   [dt_expiracao] datetime
 )
