@@ -1,8 +1,8 @@
 
 CREATE TABLE [Conta] (
-  [num_conta] int PRIMARY KEY,
+  [num_conta] int IDENTITY(1,1) PRIMARY KEY,
   [saldo] decimal,
-  [tipo_conta] nvarchar(255),
+  [tipo_conta] varchar(255),
   [data_abertura] datetime,
   [usuario_id] int
 )
