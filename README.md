@@ -29,7 +29,7 @@ Para este projeto foi utilizado o SQL Server. Abaixo segue os scripts SQL separa
 - [Índices]
 - [Stored procedures]
 - [Functions]
-- [Principais consultas mapeadas baseadas em regras de negócio]
+- [Principais consultas mapeadas baseadas em regras de negócio] (https://github.com/ardnaile/conta-digital/commit/6a32c6f978e668bbe935552298f5d0c63639277c)
 
 ### Código Fonte do CRUD
 (em andamento)
