@@ -23,7 +23,7 @@ INSERT [Transacao] ([id_transacao], [valor_transacao], [dt_hr_transacao], [tp_tr
 VALUES (8, 480.25, CAST(N'2023-08-22T09:30:00.000' AS DateTime), 8, 210987);
 
 INSERT [Transacao] ([id_transacao], [valor_transacao], [dt_hr_transacao], [tp_transacao], [num_conta]) 
-VALUES (9, 950.70, CAST(N'2023-09-10T16:45:00.000' AS DateTime), 9, 987653);
+VALUES (9, 950.70, CAST(N'2023-09-10T16:45:00.000' AS DateTime), 9, 987657);
 
 INSERT [Transacao] ([id_transacao], [valor_transacao], [dt_hr_transacao], [tp_transacao], [num_conta]) 
-VALUES (10, 700.40, CAST(N'2023-10-28T13:20:00.000' AS DateTime), 10, 123459);
+VALUES (10, 700.40, CAST(N'2023-10-28T13:20:00.000' AS DateTime), 10, 123458);
