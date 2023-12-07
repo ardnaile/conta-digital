@@ -23,7 +23,7 @@ INSERT [HistoricoTransacoes] ([id_historico], [num_conta], [id_transacao], [tp_t
 VALUES (8, 210987, 8, 8);
 
 INSERT [HistoricoTransacoes] ([id_historico], [num_conta], [id_transacao], [tp_transacao]) 
-VALUES (9, 987653, 9, 9);
+VALUES (9, 987657, 9, 9);
 
 INSERT [HistoricoTransacoes] ([id_historico], [num_conta], [id_transacao], [tp_transacao]) 
-VALUES (10, 123459, 10, 10);
+VALUES (10, 123458, 10, 10);
