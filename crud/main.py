@@ -2,7 +2,7 @@
 
 import pyodbc
 
-SERVER = 'servidor-banco2.database.windows.net'
+SERVER = 'banco2.database.windows.net'
 DATABASE = 'banco2'
 USERNAME = 'administrador'
 PASSWORD = 'SenhaAdmin#'
@@ -13,22 +13,13 @@ print("Conexão Bem Sucedida")
 
 cursor = conexao.cursor()
 
+insert = "INSERT INTO Usuario2 ( nome_usuario, email_usuario, senha_usuario, data_registro) VALUES ( 'MArua Roverto', 'pedrinfashoR2004@gmail.com', 'camaroRoxo123', CAST(N'2020-10-27T17:00:00.000' AS DateTime))"
+cursor.execute(insert)
+conexao.commit()
 
-comando = f"""SELECT * from Conta"""
+comando = f"""SELECT * from Usuario2"""
 cursor.execute(comando)
 
 records = cursor.fetchall()
 for r in records:
-    print(f"{r.num_conta}")
-
-# id = 3
-# cliente = "Lira Python"
-# produto = "Carro"
-# data = "25/08/2021"
-# preco = 5000
-# quantidade = 1
-
-# comando = f"""SELECT * from Conta(id_venda, cliente, produto, data_venda, preco, quantidade)
-# VALUES
-#     ({id}, '{cliente}', '{produto}', '{data}', {preco}, {quantidade})"""
-
+    print(f"{r}")
