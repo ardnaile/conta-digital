@@ -1,5 +1,5 @@
 CREATE TABLE [CartaoDebito] (
-  [num_cartao] nvarchar(16) PRIMARY KEY,
+  [num_cartao] varchar(16) IDENTITY(1,1) PRIMARY KEY,
   [dt_validade] date,
   [cod_seguranca] int,
   [num_conta] int UNIQUE
