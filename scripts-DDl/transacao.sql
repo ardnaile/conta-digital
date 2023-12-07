@@ -1,5 +1,5 @@
 CREATE TABLE [Transacao] (
-  [id_transacao] int PRIMARY KEY,
+  [id_transacao] int IDENTITY(1,1) PRIMARY KEY,
   [valor_transacao] decimal,
   [dt_hr_transacao] datetime,
   [tp_transacao] int,
