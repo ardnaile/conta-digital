@@ -18,7 +18,7 @@ Utilizamos a ferramenta de modelagem de dados dbdiagram.io para criação do mod
 ![conta-digital](https://github.com/ardnaile/conta-digital/assets/106704268/c4195a8b-a1ba-4a91-a5c8-3a3ab26c5e55)
 
 ### Dicionário de dados
-As informações sobre as tabelas e índices foram documentadas na planilha [[Dicionário de Dados BD2.xlsx](https://github.com/ardnaile/conta-digital/files/13532625/Dicionario.de.Dados.BD2.xlsx)](https://github.com/ardnaile/conta-digital/blob/f178fdee392a3591de9f381b59657a6a861450dc/Dicion%C3%A1rio%20de%20dados%201.1)
+As informações sobre as tabelas e índices foram documentadas na planilha (https://docs.google.com/spreadsheets/d/1s7h-08PUFU2ivZUk2W6DeGKcwTwY5Bql/edit#gid=486633979)
 
 ### Scripts SQL
 (em andamento)
