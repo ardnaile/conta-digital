@@ -39,6 +39,7 @@ Para este projeto foi utilizado o SQL Server. Abaixo segue os scripts SQL separa
 O relatório final está disponível no arquivo [relatório_final](https://alunosatcedu-my.sharepoint.com/:w:/g/personal/eliandra_282421_alunosatc_edu_br/EQE1sWbdF0ZCvfly5NhIUPcBnPq5SxGd54n4OLY7ctD3pQ?e=TW6hal).
 
 ### Informações adicionais
+O banco de dados foi construído no SQL Server.
 Para rodar os scripts de criação e inserção (DDL e DML) do banco de dados de forma lógica e sem conflito nas foreign keys, siga a seguinte ordem:<br>
 1. Usuario<br>
 2. Conta<br>
