@@ -2,9 +2,9 @@ CREATE PROCEDURE proc_desbloquearConta
     @NumConta INT
 AS
 BEGIN
-    IF NOT EXISTS (SELECT 1 FROM Conta WHERE num_conta = @NumConta AND bloqueio = 0)
+    IF NOT EXISTS (SELECT 1 FROM Conta WHERE num_conta = @NumConta AND bloqueio <> 0)
     BEGIN
-        RAISERROR('Esta conta n„o est· bloqueada.', 16, 1);
+        RAISERROR('Esta conta n√£o est√° bloqueada.', 16, 1);
         RETURN; 
     END
     ELSE
