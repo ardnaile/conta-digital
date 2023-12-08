@@ -1,4 +1,5 @@
 #pip install pyodbc
+#pip install flask
 
 import pyodbc
 from flask import Flask, request, jsonify
@@ -29,9 +30,6 @@ def insert_usuario(nome, email, senha):
         cursor.execute("INSERT INTO Usuario ( nome_usuario, email_usuario, senha_usuario) VALUES (?, ?, ?)", nome, email, senha)
         conexao.commit()
 
-        cursor.close()
-        conexao.close()
-
         return True, "Dados inseridos com sucesso."
     except Exception as e:
         return False, str(e)
@@ -40,9 +38,6 @@ def insert_tipoTransacao(tipo):
     try:
         cursor.execute("INSERT INTO TipoTransacao ( descricao_tipo) VALUES (?)", tipo)
         conexao.commit()
-
-        cursor.close()
-        conexao.close()
 
         return True, "Dados inseridos com sucesso."
     except Exception as e:
@@ -53,9 +48,6 @@ def insert_conta(saldo, tipoConta, idUsuario):
         cursor.execute("INSERT INTO Conta ( saldo, tipo_conta, usuario_id) VALUES (?, ?, ?)", saldo, tipoConta, idUsuario)
         conexao.commit()
 
-        cursor.close()
-        conexao.close()
-
         return True, "Dados inseridos com sucesso."
     except Exception as e:
         return False, str(e)
@@ -64,9 +56,6 @@ def insert_transacao(valor, tipo, conta):
     try:
         cursor.execute("INSERT INTO Transacao ( valor_transacao, tp_transacao, num_conta) VALUES (?, ?, ?)", valor, tipo, conta)
         conexao.commit()
-
-        cursor.close()
-        conexao.close()
 
         return True, "Dados inseridos com sucesso."
     except Exception as e:
@@ -77,9 +66,6 @@ def insert_beneficiario(nome, numConta, banco, idUsuario):
         cursor.execute("INSERT INTO Beneficiario ( nome_beneficiario, num_conta_beneficiario, banco, id_usuario) VALUES (?, ?, ?, ?)", nome, numConta, banco, idUsuario)
         conexao.commit()
 
-        cursor.close()
-        conexao.close()
-
         return True, "Dados inseridos com sucesso."
     except Exception as e:
         return False, str(e)
@@ -89,9 +75,6 @@ def insert_cartaoDebito(numCartao, cvv, conta):
         cursor.execute("INSERT INTO CartaoDebito ( num_cartao, cod_seguranca, num_conta) VALUES (?, ?, ?)", numCartao, cvv, conta)
         conexao.commit()
 
-        cursor.close()
-        conexao.close()
-
         return True, "Dados inseridos com sucesso."
     except Exception as e:
         return False, str(e)
@@ -100,9 +83,6 @@ def insert_cartaoDebito(numCartao, cvv, conta):
     try:
         cursor.execute("INSERT INTO CartaoDebito ( num_cartao, cod_seguranca, num_conta) VALUES (?, ?, ?)", numCartao, cvv, conta)
         conexao.commit()
-
-        cursor.close()
-        conexao.close()
 
         return True, "Dados inseridos com sucesso."
     except Exception as e:
@@ -113,9 +93,6 @@ def insert_historicoLogin(idUsuario, ip):
         cursor.execute("INSERT INTO HistoricoLogin ( id_usuario, endereco_ip) VALUES (?, ?)", idUsuario, ip)
         conexao.commit()
 
-        cursor.close()
-        conexao.close()
-
         return True, "Dados inseridos com sucesso."
     except Exception as e:
         return False, str(e)
@@ -124,9 +101,6 @@ def insert_historicoTransacoes(conta, idTransacao, tipoTransacao):
     try:
         cursor.execute("INSERT INTO HistoricoTransacoes ( num_conta, id_transacao, tp_transacao) VALUES (?, ?, ?)", conta, idTransacao, tipoTransacao)
         conexao.commit()
-
-        cursor.close()
-        conexao.close()
 
         return True, "Dados inseridos com sucesso."
     except Exception as e:
@@ -137,13 +111,54 @@ def insert_tokenAutenticacao(idUsuario):
         cursor.execute("INSERT INTO TokenAutenticacao ( id_usuario) VALUES (?)", idUsuario)
         conexao.commit()
 
-        cursor.close()
-        conexao.close()
-
         return True, "Dados inseridos com sucesso."
     except Exception as e:
         return False, str(e)
 
+def proc_bloqueioConta(idConta):
+    try:
+        cursor.execute("{CALL proc_bloquearConta (?)}", idConta)
+        conexao.commit()
+
+        return True, "Conta bloqueada."
+    except Exception as e:
+        return False, str(e)
+
+def proc_desbloqueioConta(idConta):
+    try:
+        cursor.execute("{CALL proc_desbloquearConta (?)}", idConta)
+        conexao.commit()
+
+        return True, "Conta desbloqueada."
+    except Exception as e:
+        return False, str(e)
+
+def proc_novoUsuario(nome, email, senha):
+    try:
+        cursor.execute("{CALL proc_novoUsu (?, ?, ?)}", nome, email, senha)
+        conexao.commit()
+
+        return True, "Usuario cadastrado."
+    except Exception as e:
+        return False, str(e)
+
+def proc_novoCartao(idConta):
+    try:
+        cursor.execute("{CALL proc_GerarCartaoDebito (?)}", idConta)
+        conexao.commit()
+
+        return True, "Cartão Gerado."
+    except Exception as e:
+        return False, str(e)
+
+def proc_transacao(valor, tipo, conta):
+    try:
+        cursor.execute("{CALL proc_realizar_transacao (?, ?, ? )}", valor, tipo, conta)
+        conexao.commit()
+
+        return True, "Transação Efetuada."
+    except Exception as e:
+        return False, str(e)
 
 
 
@@ -238,6 +253,55 @@ def endpoint_insert_tokenAutenticacao():
     else:
         return jsonify({"sucesso": False, "mensagem": "Dados incompletos."})
 
+@app.route('/proc/bloqueioConta', methods=['POST'])
+def endpoint_proc_bloqueioConta():
+    data = request.get_json()
+
+    if 'idConta' in data:
+        sucesso, mensagem = proc_bloqueioConta(data['idConta'])
+        return jsonify({"sucesso": sucesso, "mensagem": mensagem})
+    else:
+        return jsonify({"sucesso": False, "mensagem": "Dados incompletos."})
+
+@app.route('/proc/desbloqueioConta', methods=['POST'])
+def endpoint_proc_desbloqueioConta():
+    data = request.get_json()
+
+    if 'idConta' in data:
+        sucesso, mensagem = proc_desbloqueioConta(data['idConta'])
+        return jsonify({"sucesso": sucesso, "mensagem": mensagem})
+    else:
+        return jsonify({"sucesso": False, "mensagem": "Dados incompletos."})
+
+@app.route('/proc/novoUsuario', methods=['POST'])
+def endpoint_proc_novoUsuario():
+    data = request.get_json()
+
+    if 'nome' in data and 'email' in data and 'senha' in data:
+        sucesso, mensagem = proc_novoUsuario(data['nome'], data['email'], data['senha'])
+        return jsonify({"sucesso": sucesso, "mensagem": mensagem})
+    else:
+        return jsonify({"sucesso": False, "mensagem": "Dados incompletos."})
+
+@app.route('/proc/novoCartao', methods=['POST'])
+def endpoint_proc_novoCartao():
+    data = request.get_json()
+
+    if 'idConta' in data:
+        sucesso, mensagem = proc_novoCartao(data['idConta'])
+        return jsonify({"sucesso": sucesso, "mensagem": mensagem})
+    else:
+        return jsonify({"sucesso": False, "mensagem": "Dados incompletos."})
+
+@app.route('/proc/transacao', methods=['POST'])
+def endpoint_proc_transacao():
+    data = request.get_json()
+
+    if 'valor' in data and 'tipo' in data and 'conta' in data:
+        sucesso, mensagem = proc_transacao(data['valor'], data['tipo'], data['conta'])
+        return jsonify({"sucesso": sucesso, "mensagem": mensagem})
+    else:
+        return jsonify({"sucesso": False, "mensagem": "Dados incompletos."})
 
 
 if __name__ == '__main__':
