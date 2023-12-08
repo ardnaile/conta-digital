@@ -4,7 +4,8 @@ CREATE TABLE [Conta] (
   [saldo] decimal,
   [tipo_conta] varchar(255),
   [data_abertura] datetime DEFAULT(GETDATE()),
-  [usuario_id] int
+  [usuario_id] int,
+  [bloqueio] bit
 )
 GO
 
