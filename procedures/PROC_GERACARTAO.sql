@@ -2,16 +2,22 @@ CREATE PROCEDURE proc_GerarCartaoDebito
     @NumConta INT
 AS
 BEGIN
-	--Verifica se a conta não esta bloqueada
-	EXECUTE proc_barrarConta @NumConta;
-
+	
 	IF NOT EXISTS (SELECT 1 FROM Conta WHERE num_conta = @NumConta)
     BEGIN
         --Caso a conta não exista sai da proc
         RAISERROR('Conta não encontrada.', 16, 1);
 		RETURN; 
     END
-
+	    
+	IF NOT EXISTS (SELECT 1 FROM Conta WHERE num_conta = @NumConta AND bloqueio = 0)
+    BEGIN
+        --Caso a conta não exista sai da proc
+        RAISERROR('Conta bloqueada', 16, 1);
+		RETURN; 
+    END
+	
+	    
     -- Gera número de cartão aleatório (16 dígitos)
     DECLARE @NumCartao VARCHAR(16)
     SET @NumCartao = CAST(ABS(CHECKSUM(NEWID())) % 10000000000000000 AS VARCHAR(16))
