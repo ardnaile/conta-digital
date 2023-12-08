@@ -10,7 +10,7 @@ BEGIN
 		RETURN; 
     END
 	    
-	IF NOT EXISTS (SELECT 1 FROM Conta WHERE num_conta = @NumConta AND bloqueio = 0)
+	IF NOT EXISTS (SELECT 1 FROM Conta WHERE num_conta = @NumConta AND bloqueio = 1)
     BEGIN
         --Caso a conta não exista sai da proc
         RAISERROR('Conta bloqueada', 16, 1);
