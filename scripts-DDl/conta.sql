@@ -5,7 +5,7 @@ CREATE TABLE [Conta] (
   [tipo_conta] varchar(255),
   [data_abertura] datetime DEFAULT(GETDATE()),
   [usuario_id] int,
-  [bloqueio] bit
+  [bloqueio] bit DEFAULT(0),
 )
 GO
 
