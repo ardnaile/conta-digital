@@ -1,7 +1,7 @@
 CREATE TABLE [Transacao] (
   [id_transacao] int IDENTITY(1,1) PRIMARY KEY,
   [valor_transacao] decimal,
-  [dt_hr_transacao] datetime,
+  [dt_hr_transacao] datetime DEFAULT(GETDATE()),
   [tp_transacao] int,
   [num_conta] int
 )
