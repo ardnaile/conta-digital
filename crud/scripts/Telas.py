@@ -1,6 +1,6 @@
 import pyodbc
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import ttk, messagebox
 
 class TelaLogin:
     def __init__(self, janela):
@@ -46,11 +46,15 @@ class TelaLogin:
 
         # Exemplo de verificação simples (substitua por sua lógica de autenticação real)
         try:
-            connectionString = f'DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={servidor};DATABASE={banco_dados};UID={usuario};PWD={senha}'
-            conexao = pyodbc.connect(connectionString)
+            # connectionString = f'DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={servidor};DATABASE={banco_dados};UID={usuario};PWD={senha}'
+            # conexao = pyodbc.connect(connectionString)
+            self.container.destroy()
             TelaOpcoes(self.janela)
+            
         except:
             messagebox.showerror("Erro", "Credenciais inválidas")
+            
+
 class TelaOpcoes:
     def __init__(self, janela):
         self.janela = janela
@@ -58,7 +62,7 @@ class TelaOpcoes:
 
         # Widgets na nova janela
         self.label_opcoes = tk.Label(self.janela, text="Escolha uma opção:")
-        self.botao_cadastrar = tk.Button(self.janela, text="Cadastrar")
+        self.botao_cadastrar = tk.Button(self.janela, text="Cadastrar", command=self.abrir_tela_cadastro)
         self.botao_listar = tk.Button(self.janela, text="Listar")
         self.botao_editar = tk.Button(self.janela, text="Editar")
         self.botao_deletar = tk.Button(self.janela, text="Deletar")
@@ -69,6 +73,27 @@ class TelaOpcoes:
         self.botao_listar.pack(pady=5)
         self.botao_editar.pack(pady=5)
         self.botao_deletar.pack(pady=5)
+
+    def abrir_tela_cadastro(self):
+        self.janela_cadastro = tk.Toplevel(self.janela)
+        self.janela_cadastro.title("Cadastro")
+
+        self.janela_cadastro.geometry("400x300")
+
+        # Widgets na janela de cadastro
+        self.label_tabela = tk.Label(self.janela_cadastro, text="Selecione a tabela:")
+        self.combobox_tabela = ttk.Combobox(self.janela_cadastro, values=["Usuario", "Beneficiario", "CartaoDebito", "Conta", "HistoricoLogin", "TipoTransacao", "Transacao", "HistoricoTransacoes", "TokenAutenticacao"])
+        self.botao_confirmar_cadastro = tk.Button(self.janela_cadastro, text="Confirmar Cadastro", command=self.confirmar_cadastro)
+
+        # Layout dos widgets na janela de cadastro
+        self.label_tabela.pack(pady=10)
+        self.combobox_tabela.pack(pady=5)
+        self.botao_confirmar_cadastro.pack(pady=5)
+
+    def confirmar_cadastro(self):
+        tabela_selecionada = self.entry_tabela.get()
+        messagebox.showinfo("Cadastro", f"Cadastro na tabela {tabela_selecionada} confirmado!")
+
 
 # Criar a janela principal
 janela_principal = tk.Tk()
