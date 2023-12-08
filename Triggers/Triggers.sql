@@ -64,16 +64,3 @@ BEGIN
     SELECT i.num_conta, i.id_transacao, i.tp_transacao
     FROM inserted i;
 END;
-
--- Trigger para salvar alterações na tabela HistoricoLogin OK
-CREATE TRIGGER salvar_historico_login
-ON dbo.HistoricoLogin
-AFTER UPDATE
-AS
-BEGIN
-	SET NOCOUNT ON;
-
-	INSERT INTO dbo.HistoricoLogin (id_usuario, dt_hr_login, endereco_ip)
-	SELECT i.id_usuario, i.dt_hr_login, i.endereco_ip
-	FROM inserted i;
-END;
