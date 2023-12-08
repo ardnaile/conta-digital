@@ -25,7 +25,7 @@ As informações sobre as tabelas e índices foram documentadas na planilha [Goo
 Para este projeto foi utilizado o SQL Server. Abaixo segue os scripts SQL separados por tipo:
 - [DDL](https://github.com/ardnaile/conta-digital/tree/main/scripts-DDl)
 - [DML](https://github.com/ardnaile/conta-digital/tree/main/scripts-DML)
-- [Triggers](https://github.com/ardnaile/conta-digital/blob/main/Triggers.sql)
+- [Triggers](https://github.com/ardnaile/conta-digital/tree/main/Triggers)
 - [Índices]
 - [Stored procedures]
 - [Functions]
