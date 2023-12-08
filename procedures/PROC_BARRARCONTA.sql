@@ -15,7 +15,7 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		UPDATE Conta SET conta_bloqueada = 1 WHERE num_conta = @NumConta;
+		UPDATE Conta SET bloqueio = 1 WHERE num_conta = @NumConta;
 		SELECT 'Esta conta foi bloqueada' AS Mensagem;
 	END
 	
