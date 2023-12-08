@@ -12,15 +12,6 @@ BEGIN
         RAISERROR('Conta não encontrada.', 16, 1);
         RETURN; 
     END
-
-    -- Verifica se há saldo suficiente na conta
-    IF (SELECT Saldo FROM Conta WHERE num_conta = @num_conta) < @valor_transacao
-    BEGIN
-        -- Caso o saldo seja menor ou igual ao valor da transação, sai da proc
-        RAISERROR('Saldo insuficiente.', 16, 1);
-        RETURN;
-    END
-    ELSE
     BEGIN
         -- Insere a nova transação
         INSERT INTO Transacao(valor_transacao, dt_hr_transacao, tp_transacao, num_conta)
