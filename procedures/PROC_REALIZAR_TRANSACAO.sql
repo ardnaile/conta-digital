@@ -1,6 +1,5 @@
 CREATE PROCEDURE proc_realizar_transacao
     @valor_transacao DECIMAL(18, 0),
-    @dt_horatransacao DATETIME,
     @tp_transacao INT,
     @num_conta INT
 AS
@@ -14,8 +13,8 @@ BEGIN
     END
     BEGIN
         -- Insere a nova transação
-        INSERT INTO Transacao(valor_transacao, dt_hr_transacao, tp_transacao, num_conta)
-        VALUES (@valor_transacao, @dt_horatransacao, @tp_transacao, @num_conta);
+        INSERT INTO Transacao(valor_transacao, tp_transacao, num_conta)
+        VALUES (@valor_transacao, @tp_transacao, @num_conta);
 
         -- Retorna uma mensagem indicando que a transação foi realizada com sucesso
         SELECT 'Transação realizada com sucesso.' AS Mensagem;
