@@ -1,0 +1,29 @@
+Consultas que respondam as seguintes perguntas de negócio:
+
+Quais foram os usuários que mais movimentaram suas contas no último ano?
+SELECT U.id_usuario, U.nome_usuario, COUNT(T.id_transacao) AS TotalTransacoes
+FROM Usuario U
+INNER JOIN Conta C ON U.id_usuario = C.usuario_id
+INNER JOIN Transacao T ON C.num_conta = T.num_conta
+WHERE T.dt_hr_transacao >= DATEADD(year, -1, GETDATE())
+GROUP BY U.id_usuario, U.nome_usuario
+ORDER BY TotalTransacoes DESC
+
+Quais usuários não têm transações registradas?
+SELECT U.nome_usuario
+FROM Usuario U
+LEFT JOIN Conta C ON U.id_usuario = C.usuario_id
+LEFT JOIN Transacao T ON C.num_conta = T.num_conta
+WHERE T.id_transacao IS NULL;
+
+Quais tipos de contas estão associados a cada usuário?
+SELECT U.nome_usuario, C.tipo_conta
+FROM Usuario U
+INNER JOIN Conta C ON U.id_usuario = C.usuario_id;
+
+Quais são os tipos de transações mais comuns nas contas digitais?
+SELECT TT.descricao_tipo, COUNT(T.id_transacao) AS TotalTransacoes
+FROM Transacao T
+INNER JOIN TipoTransacao TT ON T.tp_transacao = TT.id_tipo_transacao
+GROUP BY TT.descricao_tipo
+ORDER BY TotalTransacoes DESC;
