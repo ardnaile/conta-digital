@@ -3,7 +3,7 @@ CREATE TABLE [Usuario] (
   [nome_usuario] varchar(255),
   [email_usuario] varchar(255),
   [senha_usuario] varchar(255),
-  [data_registro] datetime
+  [data_registro] datetime DEFAULT(GETDATE()),
 )
 GO
 
