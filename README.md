@@ -27,8 +27,8 @@ Para este projeto foi utilizado o SQL Server. Abaixo segue os scripts SQL separa
 - [DML](https://github.com/ardnaile/conta-digital/tree/main/scripts-DML)
 - [Triggers](https://github.com/ardnaile/conta-digital/tree/main/Triggers)
 - [Índices]
-- [Stored procedures]
-- [Functions]
+- [Stored procedures](https://github.com/ardnaile/conta-digital/tree/main/procedures)
+- [Functions](https://github.com/ardnaile/conta-digital/tree/main/functions)
 - [Principais consultas mapeadas baseadas em regras de negócio](https://github.com/ardnaile/conta-digital/commit/6a32c6f978e668bbe935552298f5d0c63639277c)
 
 ### Código Fonte do CRUD
