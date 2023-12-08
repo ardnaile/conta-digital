@@ -1,14 +1,13 @@
 CREATE PROCEDURE proc_novoUsu
     @NomeCliente VARCHAR(255),
     @emailUsuario VARCHAR(255),
-    @senhaUsuario VARCHAR(255),
-    @dt_cadastro DATETIME
+    @senhaUsuario VARCHAR(255)
 AS
 BEGIN
      BEGIN
         -- Insere o novo usuário
-        INSERT INTO Usuario ( nome_usuario, email_usuario, senha_usuario, data_registro)
-        VALUES ( @NomeCliente, @emailUsuario, @senhaUsuario, @dt_cadastro);
+        INSERT INTO Usuario ( nome_usuario, email_usuario, senha_usuario)
+        VALUES ( @NomeCliente, @emailUsuario, @senhaUsuario);
         
         -- Se necessário, você pode fazer mais coisas aqui, como enviar notificações, etc.
         
