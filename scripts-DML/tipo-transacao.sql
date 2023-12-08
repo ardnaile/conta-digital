@@ -1,29 +1,29 @@
-INSERT [TipoTransacao] ([id_tipo_transacao], [descricao_tipo]) 
-VALUES (1, 'Depósito');
+INSERT [TipoTransacao] ([descricao_tipo]) 
+VALUES ('Depósito');
 
-INSERT [TipoTransacao] ([id_tipo_transacao], [descricao_tipo]) 
-VALUES (2, 'Saque');
+INSERT [TipoTransacao] ([descricao_tipo]) 
+VALUES ('Saque');
 
-INSERT [TipoTransacao] ([id_tipo_transacao], [descricao_tipo]) 
-VALUES (3, 'Transferência');
+INSERT [TipoTransacao] ([descricao_tipo]) 
+VALUES ('Transferência');
 
-INSERT [TipoTransacao] ([id_tipo_transacao], [descricao_tipo]) 
-VALUES (4, 'Pagamento');
+INSERT [TipoTransacao] ([descricao_tipo]) 
+VALUES ('Pagamento');
 
-INSERT [TipoTransacao] ([id_tipo_transacao], [descricao_tipo]) 
-VALUES (5, 'Compra');
+INSERT [TipoTransacao] ([descricao_tipo]) 
+VALUES ('Compra');
 
-INSERT [TipoTransacao] ([id_tipo_transacao], [descricao_tipo]) 
-VALUES (6, 'Recebimento');
+INSERT [TipoTransacao] ([descricao_tipo]) 
+VALUES ('Recebimento');
 
-INSERT [TipoTransacao] ([id_tipo_transacao], [descricao_tipo]) 
-VALUES (7, 'Investimento');
+INSERT [TipoTransacao] ([descricao_tipo]) 
+VALUES ('Investimento');
 
-INSERT [TipoTransacao] ([id_tipo_transacao], [descricao_tipo]) 
-VALUES (8, 'Estorno');
+INSERT [TipoTransacao] ([descricao_tipo]) 
+VALUES ('Estorno');
 
-INSERT [TipoTransacao] ([id_tipo_transacao], [descricao_tipo]) 
-VALUES (9, 'Tarifa');
+INSERT [TipoTransacao] ([descricao_tipo]) 
+VALUES ('Tarifa');
 
-INSERT [TipoTransacao] ([id_tipo_transacao], [descricao_tipo]) 
-VALUES (10, 'Ajuste');
+INSERT [TipoTransacao] ([descricao_tipo]) 
+VALUES ('Ajuste');
