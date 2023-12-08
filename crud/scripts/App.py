@@ -17,14 +17,6 @@ print("Conexão Bem Sucedida")
 
 cursor = conexao.cursor()
 
-# comando = f"""SELECT * from Usuario"""
-# cursor.execute(comando)
-
-# records = cursor.fetchall()
-# for r in records:
-#     print(f"{r}")
-
-
 def insert_usuario(nome, email, senha):
     try:
         cursor.execute("INSERT INTO Usuario ( nome_usuario, email_usuario, senha_usuario) VALUES (?, ?, ?)", nome, email, senha)
@@ -157,6 +149,35 @@ def proc_transacao(valor, tipo, conta):
         conexao.commit()
 
         return True, "Transação Efetuada."
+    except Exception as e:
+        return False, str(e)
+
+def func_saldo(conta):
+    try:
+        saldo = cursor.execute("SELECT dbo.ObterSaldo (?)}",conta)
+        conexao.commit()
+        return saldo
+    except Exception as e:
+        return False, str(e)
+
+def select(tabela):
+    try:
+        cursor.execute(f"SELECT * FROM {tabela}")
+        colunas = [column[0] for column in cursor.description]
+
+        resultados = cursor.fetchall()
+
+        retorno = [dict(zip(colunas, row)) for row in resultados]
+
+        return jsonify(retorno)
+    except Exception as e:
+        return False, str(e)
+
+def drop(tabela):
+    try:
+        cursor.execute(f"DROP table {tabela}")
+        conexao.commit()
+        return True, "Tabela Deletada."
     except Exception as e:
         return False, str(e)
 
@@ -299,6 +320,36 @@ def endpoint_proc_transacao():
 
     if 'valor' in data and 'tipo' in data and 'conta' in data:
         sucesso, mensagem = proc_transacao(data['valor'], data['tipo'], data['conta'])
+        return jsonify({"sucesso": sucesso, "mensagem": mensagem})
+    else:
+        return jsonify({"sucesso": False, "mensagem": "Dados incompletos."})
+
+@app.route('/func/saldo', methods=['POST'])
+def endpoint_func_saldo():
+    data = request.get_json()
+
+    if 'conta' in data:
+        sucesso, mensagem = func_saldo(data['conta'])
+        return jsonify({"sucesso": sucesso, "mensagem": mensagem})
+    else:
+        return jsonify({"sucesso": False, "mensagem": "Dados incompletos."})
+
+@app.route('/select/<int:tabela>', methods=['GET'])
+def endpoint_select(tabela):
+
+    if tabela:
+        sucesso, mensagem = select(tabela)
+        return jsonify({"sucesso": sucesso, "mensagem": mensagem})
+    else:
+        return jsonify({"sucesso": False, "mensagem": "Dados incompletos."})
+
+
+@app.route('/drop', methods=['POST'])
+def drop():
+    data = request.get_json()
+
+    if 'tabela' in data:
+        sucesso, mensagem = func_saldo(data['tabela'])
         return jsonify({"sucesso": sucesso, "mensagem": mensagem})
     else:
         return jsonify({"sucesso": False, "mensagem": "Dados incompletos."})
